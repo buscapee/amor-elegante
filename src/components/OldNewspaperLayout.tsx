@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, Image, Coffee, FileText, BookOpen, ChevronDown } from "lucide-react";
@@ -28,8 +27,8 @@ const OldNewspaperLayout = () => {
     });
   };
 
-  // Placeholder - Replace with your actual start date
-  const relationshipStartDate = "2023-01-01";
+  // Updated relationship start date to June 22, 2024
+  const relationshipStartDate = "2024-06-22";
   
   // Placeholders for the images
   const images = [
