@@ -36,21 +36,21 @@ const Gallery = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen pt-24 pb-20 px-6 bg-gradient-to-b from-white to-romance-50">
-        <div className="max-w-6xl mx-auto">
+      <div className="min-h-screen pt-20 pb-16 px-4 bg-gradient-to-b from-white to-romance-50">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <div className="inline-block p-3 bg-romance-100 rounded-full mb-4">
-              <Image className="w-8 h-8 text-romance-500" />
+            <div className="inline-block p-2 bg-romance-100 rounded-full mb-3">
+              <Image className="w-6 h-6 text-romance-500" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
               Nossa Galeria
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-600 max-w-xl mx-auto text-base">
               Cada foto conta uma história e cada história é um pedaço do nosso
               amor. Aqui estão alguns dos nossos momentos mais especiais juntos.
             </p>
@@ -60,6 +60,7 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-10"
           >
             <ImageGallery images={images} />
           </motion.div>
@@ -68,9 +69,9 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 text-center"
+            className="mt-10 text-center"
           >
-            <p className="text-gray-600 max-w-xl mx-auto">
+            <p className="text-gray-600 max-w-md mx-auto text-sm">
               Estas são apenas algumas das milhares de memórias que construímos
               juntos. Estou ansioso para criar muito mais momentos especiais ao
               seu lado.

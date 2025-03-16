@@ -64,8 +64,8 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
   }, [images]);
 
   return (
-    <div className="relative overflow-hidden rounded-xl shadow-xl max-w-4xl mx-auto">
-      <div className="aspect-w-16 aspect-h-9 md:aspect-h-10 bg-gray-100">
+    <div className="relative overflow-hidden rounded-xl shadow-xl max-w-3xl mx-auto">
+      <div className="aspect-w-16 aspect-h-9 bg-gray-100 max-h-[350px]">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={currentIndex}
@@ -87,11 +87,11 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
       </div>
 
       {/* Caption */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/30 backdrop-blur-sm text-white">
+      <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/30 backdrop-blur-sm text-white">
         <div className="flex justify-between items-center">
-          <p className="text-sm md:text-base">{images[currentIndex].alt}</p>
+          <p className="text-xs md:text-sm">{images[currentIndex].alt}</p>
           {images[currentIndex].date && (
-            <p className="text-xs md:text-sm text-white/80">
+            <p className="text-xs text-white/80">
               {images[currentIndex].date}
             </p>
           )}
@@ -100,22 +100,22 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
       {/* Navigation */}
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 rounded-full transition-all"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-1.5 rounded-full transition-all"
         onClick={goToPrevious}
         aria-label="Previous image"
       >
-        <ArrowLeft className="w-5 h-5" />
+        <ArrowLeft className="w-4 h-4" />
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-2 rounded-full transition-all"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-1.5 rounded-full transition-all"
         onClick={goToNext}
         aria-label="Next image"
       >
-        <ArrowRight className="w-5 h-5" />
+        <ArrowRight className="w-4 h-4" />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-16 left-0 right-0 flex justify-center space-x-2 pb-4">
+      <div className="absolute bottom-12 left-0 right-0 flex justify-center space-x-1.5 pb-3">
         {images.map((_, index) => (
           <button
             key={index}
@@ -123,7 +123,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
               setDirection(index > currentIndex ? 1 : -1);
               setCurrentIndex(index);
             }}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`w-1.5 h-1.5 rounded-full transition-all ${
               index === currentIndex
                 ? "bg-white scale-125"
                 : "bg-white/50 hover:bg-white/80"
