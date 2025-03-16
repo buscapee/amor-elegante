@@ -4,38 +4,34 @@ import { ReactNode } from "react";
 
 interface PageTransitionProps {
   children: ReactNode;
+  delay?: number;
 }
 
-const PageTransition = ({ children }: PageTransitionProps) => {
+const PageTransition = ({ children, delay = 0 }: PageTransitionProps) => {
   const pageVariants = {
-    initial: {
+    hidden: {
       opacity: 0,
-      y: 20,
+      y: 30,
     },
-    in: {
+    visible: {
       opacity: 1,
       y: 0,
+      transition: {
+        type: "spring",
+        damping: 20,
+        stiffness: 100,
+        delay: delay,
+      },
     },
-    out: {
-      opacity: 0,
-      y: -20,
-    },
-  };
-
-  const pageTransition = {
-    type: "tween",
-    ease: "anticipate",
-    duration: 0.5,
   };
 
   return (
     <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
       variants={pageVariants}
-      transition={pageTransition}
-      className="min-h-screen"
+      className="newspaper-section mb-16 md:mb-24"
     >
       {children}
     </motion.div>

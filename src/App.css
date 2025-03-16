@@ -1,8 +1,147 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1589144561523-4c7a32c8e6b7?q=80&w=1974&auto=format&fit=crop');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(245, 242, 235, 0.92);
+  z-index: -1;
+}
+
+.newspaper-container {
+  position: relative;
+}
+
+.newspaper-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.newspaper-card {
+  background-color: rgba(250, 247, 240, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.newspaper-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.newspaper-headline {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.newspaper-border {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.newspaper-section {
+  position: relative;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.newspaper-section::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background-image: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    transparent);
+}
+
+.newspaper-stamp {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 120px;
+  height: 120px;
+  background-image: url('https://www.transparenttextures.com/patterns/old-stamp.png');
+  background-size: contain;
+  transform: rotate(15deg);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.newspaper-divider {
+  height: 1px;
+  background-image: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    transparent);
+  margin: 2rem 0;
+}
+
+.coffee-stain {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: url('https://www.transparenttextures.com/patterns/coffee-stain.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fold-effect {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.05) 20%,
+    rgba(0, 0, 0, 0.05) 80%,
+    transparent
+  );
 }
 
 .logo {
