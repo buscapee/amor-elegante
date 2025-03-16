@@ -2,7 +2,7 @@
 import PageTransition from "@/components/PageTransition";
 import ImageGallery from "@/components/ImageGallery";
 import { motion } from "framer-motion";
-import { Image } from "lucide-react";
+import { Image, Heart } from "lucide-react";
 
 const Gallery = () => {
   // Placeholders - Replace with your actual images
@@ -34,33 +34,60 @@ const Gallery = () => {
     },
   ];
 
+  // Positions for scattered hearts
+  const heartPositions = [
+    { top: '10%', left: '5%', size: 16, rotate: '15deg', opacity: 0.6 },
+    { top: '15%', right: '8%', size: 12, rotate: '-10deg', opacity: 0.5 },
+    { bottom: '20%', left: '7%', size: 14, rotate: '8deg', opacity: 0.7 },
+    { bottom: '25%', right: '10%', size: 10, rotate: '-5deg', opacity: 0.4 },
+  ];
+
   return (
     <PageTransition>
-      <div className="min-h-screen pt-20 pb-16 px-4 bg-gradient-to-b from-white to-romance-50">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen pt-16 pb-16 px-4 bg-gradient-to-b from-white to-romance-50 newspaper-container">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <div className="inline-block p-2 bg-romance-100 rounded-full mb-3">
-              <Image className="w-6 h-6 text-romance-500" />
+              <Image className="w-5 h-5 text-romance-500" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 font-newspaper-headline">
               Nossa Galeria
             </h1>
-            <p className="text-gray-600 max-w-xl mx-auto text-base">
+            <p className="text-gray-600 max-w-xl mx-auto text-sm font-newspaper-body">
               Cada foto conta uma história e cada história é um pedaço do nosso
               amor. Aqui estão alguns dos nossos momentos mais especiais juntos.
             </p>
           </motion.div>
 
+          {/* Scattered Hearts */}
+          {heartPositions.map((pos, idx) => (
+            <Heart
+              key={idx}
+              className="absolute z-10 text-black"
+              style={{
+                top: pos.top,
+                left: pos.left,
+                right: pos.right,
+                bottom: pos.bottom,
+                width: pos.size,
+                height: pos.size,
+                transform: `rotate(${pos.rotate})`,
+                opacity: pos.opacity,
+                fill: "black"
+              }}
+            />
+          ))}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-10"
+            className="mb-8"
           >
             <ImageGallery images={images} />
           </motion.div>
@@ -69,9 +96,9 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-10 text-center"
+            className="mt-8 text-center"
           >
-            <p className="text-gray-600 max-w-md mx-auto text-sm">
+            <p className="text-gray-600 max-w-md mx-auto text-xs font-newspaper-subhead italic">
               Estas são apenas algumas das milhares de memórias que construímos
               juntos. Estou ansioso para criar muito mais momentos especiais ao
               seu lado.

@@ -2,7 +2,7 @@
 import PageTransition from "@/components/PageTransition";
 import TimelineEvent from "@/components/TimelineEvent";
 import { motion } from "framer-motion";
-import { Clock } from "lucide-react";
+import { Clock, Heart } from "lucide-react";
 
 const Timeline = () => {
   // Placeholders - Replace with your actual timeline events
@@ -37,29 +37,57 @@ const Timeline = () => {
     },
   ];
 
+  // Positions for scattered hearts
+  const heartPositions = [
+    { top: '15%', left: '3%', size: 16, rotate: '15deg', opacity: 0.6 },
+    { top: '25%', right: '5%', size: 12, rotate: '-10deg', opacity: 0.5 },
+    { bottom: '30%', left: '8%', size: 14, rotate: '8deg', opacity: 0.7 },
+    { bottom: '20%', right: '6%', size: 10, rotate: '-5deg', opacity: 0.4 },
+    { top: '50%', right: '10%', size: 8, rotate: '20deg', opacity: 0.3 },
+  ];
+
   return (
     <PageTransition>
-      <div className="min-h-screen pt-24 pb-20 px-6 bg-gradient-to-b from-white to-romance-50">
-        <div className="max-w-6xl mx-auto">
+      <div className="min-h-screen pt-20 pb-16 px-4 bg-gradient-to-b from-white to-romance-50 newspaper-container relative">
+        {/* Scattered Hearts */}
+        {heartPositions.map((pos, idx) => (
+          <Heart
+            key={idx}
+            className="absolute z-10 text-black"
+            style={{
+              top: pos.top,
+              left: pos.left,
+              right: pos.right,
+              bottom: pos.bottom,
+              width: pos.size,
+              height: pos.size,
+              transform: `rotate(${pos.rotate})`,
+              opacity: pos.opacity,
+              fill: "black"
+            }}
+          />
+        ))}
+
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <div className="inline-block p-3 bg-romance-100 rounded-full mb-4">
-              <Clock className="w-8 h-8 text-romance-500" />
+            <div className="inline-block p-2 bg-romance-100 rounded-full mb-3">
+              <Clock className="w-5 h-5 text-romance-500" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3 font-newspaper-headline">
               Nossa História
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-600 max-w-xl mx-auto text-sm font-newspaper-body">
               Uma jornada de amor, crescimento e momentos inesquecíveis que
               construímos juntos ao longo do tempo.
             </p>
           </motion.div>
 
-          <div className="mt-20">
+          <div className="mt-16">
             {timelineEvents.map((event, index) => (
               <TimelineEvent
                 key={index}
@@ -77,12 +105,12 @@ const Timeline = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 glass-card p-8 rounded-xl text-center max-w-2xl mx-auto"
+            className="mt-12 glass-card p-6 rounded-lg text-center max-w-xl mx-auto"
           >
-            <h3 className="text-2xl font-bold text-romance-600 mb-4">
+            <h3 className="text-xl font-bold text-romance-600 mb-3 font-newspaper-headline">
               E nossa história continua...
             </h3>
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-sm font-newspaper-body">
               Cada dia é um novo capítulo na nossa jornada juntos. Mal posso
               esperar para ver o que o futuro nos reserva e quais novas
               aventuras iremos vivenciar lado a lado.
