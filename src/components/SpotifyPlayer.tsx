@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { Music, Pause, Play } from "lucide-react";
+import { ChevronDown, ChevronUp, Music, Pause, Play } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 
 interface SpotifyPlayerProps {
   playlistId: string;
@@ -30,10 +31,7 @@ const SpotifyPlayer = ({ playlistId }: SpotifyPlayerProps) => {
           isExpanded ? "border-2 border-black/20" : ""
         }`}
       >
-        <div
-          className="flex items-center justify-between cursor-pointer"
-          onClick={togglePlayer}
-        >
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Music className="w-6 h-6 text-gray-800" />
             <h3 className="font-newspaper-headline text-xl md:text-2xl font-bold">
@@ -53,8 +51,26 @@ const SpotifyPlayer = ({ playlistId }: SpotifyPlayerProps) => {
         </div>
 
         <p className="text-sm italic text-gray-600 mt-2 mb-4 font-newspaper-subhead">
-          "Nossa trilha sonora especial - Clique para expandir"
+          "Nossa trilha sonora especial"
         </p>
+
+        <Button 
+          onClick={togglePlayer}
+          variant="outline" 
+          className="flex items-center justify-center gap-2 w-full border border-black/20 hover:bg-black/5 py-3 mt-2 mb-4"
+        >
+          {isExpanded ? (
+            <>
+              <span>Recolher playlist</span>
+              <ChevronUp className="w-4 h-4" />
+            </>
+          ) : (
+            <>
+              <span>Expandir playlist</span>
+              <ChevronDown className="w-4 h-4" />
+            </>
+          )}
+        </Button>
 
         {isExpanded && (
           <motion.div
