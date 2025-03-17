@@ -24,7 +24,7 @@ interface YT {
           onError?: (event: { data: number }) => void;
         };
       }
-    ): void;
+    ): YTPlayer;
     PlayerState: {
       ENDED: number;
       PLAYING: number;
@@ -32,6 +32,13 @@ interface YT {
       BUFFERING: number;
       CUED: number;
     };
+  };
+  PlayerState: {
+    ENDED: number;
+    PLAYING: number;
+    PAUSED: number;
+    BUFFERING: number;
+    CUED: number;
   };
 }
 
