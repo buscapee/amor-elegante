@@ -5,11 +5,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import OldNewspaperLayout from "./components/OldNewspaperLayout";
+import BackgroundMusic from "./components/BackgroundMusic";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Função para tocar o som do papel quando o usuário rola a página
+  // Function to play paper sound when user scrolls
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     const paperSound = new Audio('/paper-sound.mp3');
@@ -30,11 +31,21 @@ const App = () => {
     };
   }, []);
 
+  // Add newspaper-like coffee stains at random positions
+  useEffect(() => {
+    const coffeeStains = document.querySelectorAll('.coffee-stain');
+    coffeeStains.forEach(stain => {
+      const rotation = Math.random() * 360;
+      (stain as HTMLElement).style.transform = `rotate(${rotation}deg)`;
+    });
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <BackgroundMusic videoId="RSTIP4KL5Uc" />
         <OldNewspaperLayout />
       </TooltipProvider>
     </QueryClientProvider>

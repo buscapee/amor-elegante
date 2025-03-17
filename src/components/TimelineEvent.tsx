@@ -44,10 +44,24 @@ const TimelineEvent = ({
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={cn(
-          "newspaper-card rounded-lg overflow-hidden w-full md:w-4/12 relative",
+          "newspaper-card rounded-lg overflow-hidden w-full md:w-5/12 relative", // Made width smaller (was 4/12)
           isEven ? "md:ml-auto" : "md:mr-auto"
         )}
       >
+        {/* Newspaper texture overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-0 opacity-30"
+          style={{
+            backgroundImage: `url('https://www.transparenttextures.com/patterns/newspaper.png')`,
+            backgroundRepeat: 'repeat'
+          }}
+        />
+        
+        {/* Newspaper fold effect */}
+        <div 
+          className="absolute top-0 bottom-0 left-1/4 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent z-1"
+        />
+        
         {/* Scattered Hearts */}
         {heartPositions.map((pos, idx) => (
           <Heart
@@ -67,21 +81,23 @@ const TimelineEvent = ({
           />
         ))}
 
-        <div className="p-4">
-          <span className="inline-block px-2 py-0.5 rounded-sm bg-gray-200 text-gray-800 text-xs font-medium mb-2">
+        <div className="p-3 relative z-10">
+          <span className="inline-block px-2 py-0.5 rounded-sm bg-gray-200 text-gray-800 text-xs font-medium mb-2 font-serif">
             {date}
           </span>
-          <h3 className="text-lg font-bold text-gray-900 mb-1 font-newspaper-headline">{title}</h3>
-          <p className="text-gray-600 text-sm">{description}</p>
+          <h3 className="text-base font-bold text-gray-900 mb-1 font-newspaper-headline">{title}</h3>
+          <p className="text-gray-600 text-xs">{description}</p>
         </div>
         {image && (
-          <div className="relative overflow-hidden h-32">
+          <div className="relative overflow-hidden h-24">
             <img
               src={image}
               alt={title}
               className="w-full h-full object-cover object-center filter grayscale contrast-125"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <div className="absolute inset-0 border border-gray-200 z-10"></div>
+            <div className="absolute inset-0 shadow-inner z-10"></div>
           </div>
         )}
       </motion.div>

@@ -12,6 +12,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   position: relative;
+  font-family: 'Playfair Display', serif;
 }
 
 body::before {
@@ -27,6 +28,9 @@ body::before {
 
 .newspaper-container {
   position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .newspaper-container::before {
@@ -38,6 +42,19 @@ body::before {
   bottom: 0;
   background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
   opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Add a subtle yellowed edge effect to make it look like an old newspaper */
+.newspaper-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 85%, rgba(205, 180, 130, 0.3) 100%);
   pointer-events: none;
   z-index: -1;
 }
@@ -142,6 +159,59 @@ body::before {
     rgba(0, 0, 0, 0.05) 80%,
     transparent
   );
+}
+
+/* New newspaper-specific style additions */
+.newspaper-column {
+  column-count: 1;
+}
+
+@media (min-width: 768px) {
+  .newspaper-column {
+    column-count: 2;
+    column-gap: 2rem;
+    column-rule: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.newspaper-image {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.newspaper-image img {
+  filter: grayscale(100%) contrast(120%);
+  transition: all 0.3s ease;
+}
+
+.newspaper-image:hover img {
+  filter: grayscale(80%) contrast(110%);
+}
+
+.newspaper-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.newspaper-caption {
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.newspaper-date {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #777;
 }
 
 .logo {
