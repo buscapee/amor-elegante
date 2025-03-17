@@ -124,9 +124,10 @@ export default {
 				},
 				'heart-beat': {
 					'0%': { transform: 'scale(1)' },
-					'25%': { transform: 'scale(1.1)' },
-					'40%': { transform: 'scale(1)' },
-					'60%': { transform: 'scale(1.1)' },
+					'15%': { transform: 'scale(1.3)' },
+					'30%': { transform: 'scale(1)' },
+					'45%': { transform: 'scale(1.3)' },
+					'60%': { transform: 'scale(1)' },
 					'100%': { transform: 'scale(1)' }
 				}
 			},
