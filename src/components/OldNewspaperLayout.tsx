@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Heart, Image, Coffee, FileText, BookOpen, ChevronDown } from "lucide-react";
+import { Heart, Image, Coffee, FileText, BookOpen, ChevronDown, Music } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import DaysCounter from "@/components/DaysCounter";
 import NewspaperHeader from "@/components/NewspaperHeader";
 import LoveReason from "@/components/LoveReason";
 import ImageGallery from "@/components/ImageGallery";
 import TimelineEvent from "@/components/TimelineEvent";
+import SpotifyPlayer from "@/components/SpotifyPlayer";
 
 const OldNewspaperLayout = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -27,10 +28,10 @@ const OldNewspaperLayout = () => {
     });
   };
 
-  // Updated relationship start date to June 22, 2024
   const relationshipStartDate = "2024-06-22";
   
-  // Placeholders for the images
+  const spotifyPlaylistId = "37i9dQZF1E4zSKKxLmC9qB";
+  
   const images = [
     {
       src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
@@ -59,7 +60,6 @@ const OldNewspaperLayout = () => {
     },
   ];
   
-  // Placeholders for the love reasons
   const loveReasons = [
     {
       title: "Seu sorriso",
@@ -93,7 +93,6 @@ const OldNewspaperLayout = () => {
     },
   ];
   
-  // Placeholders for timeline events
   const timelineEvents = [
     {
       date: "Janeiro 2023",
@@ -127,16 +126,13 @@ const OldNewspaperLayout = () => {
 
   return (
     <div className="newspaper-container min-h-screen pb-20">
-      {/* Decorative elements */}
       <div className="coffee-stain" style={{ top: '15%', left: '5%' }}></div>
       <div className="coffee-stain" style={{ bottom: '25%', right: '8%' }}></div>
       <div className="fold-effect" style={{ left: '33%' }}></div>
       <div className="fold-effect" style={{ left: '66%' }}></div>
       
-      {/* Newspaper header */}
       <NewspaperHeader relationshipStartDate={relationshipStartDate} />
       
-      {/* Page indicator */}
       <button
         onClick={scrollToContent}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-gray-800/80 hover:text-gray-800 transition-colors animate-float"
@@ -144,7 +140,6 @@ const OldNewspaperLayout = () => {
         <ChevronDown className="w-8 h-8" />
       </button>
       
-      {/* Nosso Amor section */}
       <PageTransition>
         <div className="newspaper-section py-16">
           <div className="relative max-w-5xl mx-auto">
@@ -191,11 +186,12 @@ const OldNewspaperLayout = () => {
                 />
               ))}
             </div>
+
+            <SpotifyPlayer playlistId={spotifyPlaylistId} />
           </div>
         </div>
       </PageTransition>
       
-      {/* Nossos Momentos section */}
       <PageTransition delay={0.2}>
         <div className="newspaper-section py-16">
           <div className="relative max-w-5xl mx-auto">
@@ -246,7 +242,6 @@ const OldNewspaperLayout = () => {
         </div>
       </PageTransition>
       
-      {/* Nosso Futuro section */}
       <PageTransition delay={0.4}>
         <div className="newspaper-section py-16">
           <div className="relative max-w-5xl mx-auto">
@@ -315,7 +310,6 @@ const OldNewspaperLayout = () => {
         </div>
       </PageTransition>
       
-      {/* Footer */}
       <PageTransition delay={0.6}>
         <footer className="text-center py-8 text-gray-600">
           <p className="font-newspaper-subhead">
